@@ -7,7 +7,7 @@ authorTitle: "MDS, Fellow in Implantology"
 authorImage: "/images/dr-gupta.webp"
 category: "Dental Implants"
 readTime: "8 min read"
-featuredImage: "/images/blog-implants-guide.webp"
+featuredImage: "/images/dental-implants-before.jpg"
 tags: ["dental implants", "tooth replacement", "implant cost Mumbai", "permanent teeth"]
 seoTitle: "Dental Implants Mumbai Guide 2025 – Cost, Procedure & Recovery"
 seoDescription: "Complete guide to dental implants in Mumbai. Learn about costs, the 3-day procedure, recovery tips, and why Dr. Gupta is Mumbai's trusted implant specialist."

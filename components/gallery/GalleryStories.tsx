@@ -1,44 +1,52 @@
-'use client'
-import { motion } from 'framer-motion'
-import Image from 'next/image'
-import { StarIcon } from '@heroicons/react/24/solid'
+"use client";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { StarIcon } from "@heroicons/react/24/solid";
 
 const stories = [
   {
-    name: 'Rajesh M.',
+    name: "Rajesh M.",
     age: 52,
-    treatment: 'Full Mouth Implants',
-    quote: 'I had been wearing dentures for 10 years. Dr. Gupta gave me fixed teeth in 3 days. I can eat anything now — even chikki and peanuts. This changed my life completely.',
-    image: '/images/story-rajesh.webp',
+    treatment: "Full Mouth Implants",
+    quote:
+      "I had been wearing dentures for 10 years. Dr. Gupta gave me fixed teeth in 3 days. I can eat anything now — even chikki and peanuts. This changed my life completely.",
+    image: "/images/rajesh.png",
     stars: 5,
   },
   {
-    name: 'Priya S.',
+    name: "Priya S.",
     age: 34,
-    treatment: 'Smile Makeover (Veneers)',
-    quote: 'I always hid my smile in photos. After my wedding makeover with Dr. Gupta, I can\'t stop smiling. My wedding pictures are beautiful because I\'m genuinely beaming in every single one.',
-    image: '/images/story-priya.webp',
+    treatment: "Smile Makeover (Veneers)",
+    quote:
+      "I always hid my smile in photos. After my wedding makeover with Dr. Gupta, I can't stop smiling. My wedding pictures are beautiful because I'm genuinely beaming in every single one.",
+    image: "/images/priya.png",
     stars: 5,
   },
   {
-    name: 'Ananya K.',
+    name: "Ananya K.",
     age: 28,
-    treatment: 'Clear Aligners',
-    quote: 'I\'m a marketing professional and couldn\'t have metal braces. Clear aligners straightened my teeth without anyone at work noticing. The 3D simulation showed me exactly what I\'d get.',
-    image: '/images/story-ananya.webp',
+    treatment: "Clear Aligners",
+    quote:
+      "I'm a marketing professional and couldn't have metal braces. Clear aligners straightened my teeth without anyone at work noticing. The 3D simulation showed me exactly what I'd get.",
+    image: "/images/ananya.jpg",
     stars: 5,
   },
-]
+];
 
 export const GalleryStories = () => {
   return (
     <section className="py-section bg-mint-fresh/20">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <p className="text-gold uppercase tracking-widest text-sm font-medium mb-4">Patient Stories</p>
-          <h2 className="font-serif text-h2 text-teal">More Than Just Photos</h2>
+          <p className="text-gold uppercase tracking-widest text-sm font-medium mb-4">
+            Patient Stories
+          </p>
+          <h2 className="font-serif text-h2 text-teal">
+            More Than Just Photos
+          </h2>
           <p className="text-warm-grey mt-4 max-w-xl mx-auto">
-            Behind every transformation is a person whose life changed. Here are their stories.
+            Behind every transformation is a person whose life changed. Here are
+            their stories.
           </p>
         </div>
 
@@ -72,7 +80,9 @@ export const GalleryStories = () => {
                 </p>
                 <div>
                   <p className="font-medium text-teal">{story.name}</p>
-                  <p className="text-warm-grey text-xs">{story.age} years • {story.treatment}</p>
+                  <p className="text-warm-grey text-xs">
+                    {story.age} years • {story.treatment}
+                  </p>
                 </div>
               </div>
             </motion.div>
@@ -80,5 +90,5 @@ export const GalleryStories = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};

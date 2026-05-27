@@ -1,8 +1,8 @@
-import Link from 'next/link'
-import Image from 'next/image'
-import { Button } from '@/components/ui/Button'
-import { CalendarDaysIcon, ClockIcon } from '@heroicons/react/24/outline'
-import type { BlogPost } from '@/lib/blog'
+import Link from "next/link";
+import Image from "next/image";
+import { Button } from "@/components/ui/Button";
+import { CalendarDaysIcon, ClockIcon } from "@heroicons/react/24/outline";
+import type { BlogPost } from "@/lib/blog";
 
 export const FeaturedPost = ({ post }: { post: BlogPost }) => {
   return (
@@ -10,7 +10,7 @@ export const FeaturedPost = ({ post }: { post: BlogPost }) => {
       <div className="grid md:grid-cols-2">
         <div className="relative aspect-[4/3] md:aspect-auto">
           <Image
-            src={post.featuredImage}
+            src="/images/bridal-smile-makeover.png"
             alt={post.title}
             fill
             className="object-cover"
@@ -25,13 +25,15 @@ export const FeaturedPost = ({ post }: { post: BlogPost }) => {
           <h2 className="font-serif text-2xl md:text-h3 text-teal mb-3">
             {post.title}
           </h2>
-          <p className="text-warm-grey leading-relaxed mb-4">
-            {post.excerpt}
-          </p>
+          <p className="text-warm-grey leading-relaxed mb-4">{post.excerpt}</p>
           <div className="flex items-center gap-4 text-xs text-warm-grey mb-6">
             <span className="flex items-center gap-1">
               <CalendarDaysIcon className="w-3.5 h-3.5" />
-              {new Date(post.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}
+              {new Date(post.date).toLocaleDateString("en-IN", {
+                day: "numeric",
+                month: "short",
+                year: "numeric",
+              })}
             </span>
             <span className="flex items-center gap-1">
               <ClockIcon className="w-3.5 h-3.5" />
@@ -46,5 +48,5 @@ export const FeaturedPost = ({ post }: { post: BlogPost }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};

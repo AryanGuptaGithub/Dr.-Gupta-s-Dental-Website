@@ -1,8 +1,8 @@
-'use client'
-import { motion } from 'framer-motion'
-import Image from 'next/image'
-import { Button } from '@/components/ui/Button'
-import { ShieldCheckIcon, StarIcon } from '@heroicons/react/24/outline'
+"use client";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { Button } from "@/components/ui/Button";
+import { ShieldCheckIcon, StarIcon } from "@heroicons/react/24/outline";
 
 export const ImplantHero = () => {
   return (
@@ -26,8 +26,9 @@ export const ImplantHero = () => {
               <span className="text-gold">in Just 3 Days</span>
             </h1>
             <p className="text-warm-grey text-lg leading-relaxed mb-8">
-              Replace missing teeth with the most advanced German implant systems. 
-              Painless procedure, natural‑looking results, and a smile that lasts a lifetime.
+              Replace missing teeth with the most advanced German implant
+              systems. Painless procedure, natural‑looking results, and a smile
+              that lasts a lifetime.
             </p>
 
             {/* Trust micro-indicators */}
@@ -46,7 +47,11 @@ export const ImplantHero = () => {
               <Button variant="primary-gold" href="/book-appointment">
                 Book Free Consultation
               </Button>
-              <Button variant="outline-teal" href="https://wa.me/919XXXXXXXXX" external>
+              <Button
+                variant="outline-teal"
+                href="https://wa.me/919XXXXXXXXX"
+                external
+              >
                 Ask on WhatsApp
               </Button>
             </div>
@@ -60,7 +65,7 @@ export const ImplantHero = () => {
           >
             <div className="relative w-full aspect-square rounded-3xl overflow-hidden shadow-card-hover">
               <Image
-                src="/images/implant-hero.webp"
+                src="/images/dental-implant.png"
                 alt="Dental implant model showing permanent teeth solution"
                 fill
                 className="object-cover"
@@ -69,12 +74,14 @@ export const ImplantHero = () => {
               />
             </div>
             <div className="absolute -bottom-4 -left-4 bg-white rounded-2xl shadow-card p-4">
-              <p className="text-sm font-semibold text-teal">German Implant System</p>
+              <p className="text-sm font-semibold text-teal">
+                German Implant System
+              </p>
               <p className="text-xs text-warm-grey">Lifetime Warranty</p>
             </div>
           </motion.div>
         </div>
       </div>
     </section>
-  )
-}
+  );
+};

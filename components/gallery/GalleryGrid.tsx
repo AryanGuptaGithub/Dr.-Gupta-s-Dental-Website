@@ -1,129 +1,149 @@
-'use client'
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import Image from 'next/image'
-import { XMarkIcon, ChevronLeftIcon, ChevronRightIcon, ArrowsRightLeftIcon } from '@heroicons/react/24/outline'
+"use client";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
+import {
+  XMarkIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  ArrowsRightLeftIcon,
+} from "@heroicons/react/24/outline";
 
-type Category = 'all' | 'implants' | 'veneers' | 'whitening' | 'braces'
+type Category = "all" | "implants" | "veneers" | "whitening" | "braces";
 
 interface GalleryItem {
-  id: number
-  before: string
-  after: string
-  title: string
-  category: Category
-  description: string
+  id: number;
+  before: string;
+  after: string;
+  title: string;
+  category: Category;
+  description: string;
 }
 
 const galleryItems: GalleryItem[] = [
   {
     id: 1,
-    before: '/images/gallery-implant-before-1.webp',
-    after: '/images/gallery-implant-after-1.webp',
-    title: 'Single Tooth Implant',
-    category: 'implants',
-    description: 'Replaced missing front tooth with a dental implant and crown. Natural-looking result that blends perfectly.',
+    before: "/images/dental-implants-before-2.jpg",
+    after: "/images/dental-implants-after-2.jpg",
+    title: "Single Tooth Implant",
+    category: "implants",
+    description:
+      "Replaced missing front tooth with a dental implant and crown. Natural-looking result that blends perfectly.",
   },
   {
     id: 2,
-    before: '/images/gallery-veneers-before-1.webp',
-    after: '/images/gallery-veneers-after-1.webp',
-    title: 'Porcelain Veneers (4 teeth)',
-    category: 'veneers',
-    description: 'Transformed chipped and discolored front teeth with custom porcelain veneers for a symmetrical, bright smile.',
+    before: "/images/Four veneers 1.jpg",
+    after: "/images/Four veneers 2.jpg",
+    title: "Porcelain Veneers (4 teeth)",
+    category: "veneers",
+    description:
+      "Transformed chipped and discolored front teeth with custom porcelain veneers for a symmetrical, bright smile.",
   },
   {
     id: 3,
-    before: '/images/gallery-whitening-before-1.webp',
-    after: '/images/gallery-whitening-after-1.webp',
-    title: 'Laser Whitening',
-    category: 'whitening',
-    description: 'Single session laser whitening. Teeth went from stained to 7 shades brighter in 60 minutes.',
+    before: "/images/teeth whiteing 1.png",
+    after: "/images/teeth whiteing 2.png",
+    title: "Laser Whitening",
+    category: "whitening",
+    description:
+      "Single session laser whitening. Teeth went from stained to 7 shades brighter in 60 minutes.",
   },
   {
     id: 4,
-    before: '/images/gallery-braces-before-1.webp',
-    after: '/images/gallery-braces-after-1.webp',
-    title: 'Clear Aligners (12 months)',
-    category: 'braces',
-    description: 'Corrected crowding and gaps with invisible aligners. No metal, no one noticed during treatment.',
+    before: "/images/aligners 1.png",
+    after: "/images/aligners 2.png",
+    title: "Clear Aligners (12 months)",
+    category: "braces",
+    description:
+      "Corrected crowding and gaps with invisible aligners. No metal, no one noticed during treatment.",
   },
   {
     id: 5,
-    before: '/images/gallery-implant-before-2.webp',
-    after: '/images/gallery-implant-after-2.webp',
-    title: 'Full Mouth Implants',
-    category: 'implants',
-    description: 'Life-changing full mouth restoration with implant-supported bridge. Patient went from dentures to fixed teeth.',
+    before: "/images/full mouth implant 1.png",
+    after: "/images/full mouth implant 2.png",
+    title: "Full Mouth Implants",
+    category: "implants",
+    description:
+      "Life-changing full mouth restoration with implant-supported bridge. Patient went from dentures to fixed teeth.",
   },
   {
     id: 6,
-    before: '/images/gallery-veneers-before-2.webp',
-    after: '/images/gallery-veneers-after-2.webp',
-    title: 'Smile Makeover (8 Veneers)',
-    category: 'veneers',
-    description: 'Complete smile transformation with Digital Smile Design and porcelain veneers for a celebrity-style smile.',
+    before: "/images/Smile Makeover 1.jpg",
+    after: "/images/Smile Makeover 2.jpg",
+    title: "Smile Makeover (8 Veneers)",
+    category: "veneers",
+    description:
+      "Complete smile transformation with Digital Smile Design and porcelain veneers for a celebrity-style smile.",
   },
   {
     id: 7,
-    before: '/images/gallery-whitening-before-2.webp',
-    after: '/images/gallery-whitening-after-2.webp',
-    title: 'Combo Whitening Package',
-    category: 'whitening',
-    description: 'In-clinic laser session followed by take-home maintenance. Long-lasting, brilliant white result.',
+    before: "/images/teeth whiteing 1.png",
+    after: "/images/teeth whiteing 2.png",
+    title: "Combo Whitening Package",
+    category: "whitening",
+    description:
+      "In-clinic laser session followed by take-home maintenance. Long-lasting, brilliant white result.",
   },
   {
     id: 8,
-    before: '/images/gallery-braces-before-2.webp',
-    after: '/images/gallery-braces-after-2.webp',
-    title: 'Ceramic Braces (18 months)',
-    category: 'braces',
-    description: 'Adult orthodontic treatment with barely-visible ceramic brackets. Straight smile without metal mouth.',
+    before: "/images/ceramic aligners 1.jpg",
+    after: "/images/ceramic aligners 2.jpg",
+    title: "Ceramic Braces (18 months)",
+    category: "braces",
+    description:
+      "Adult orthodontic treatment with barely-visible ceramic brackets. Straight smile without metal mouth.",
   },
-]
+];
 
 const categories: { value: Category; label: string }[] = [
-  { value: 'all', label: 'All Smiles' },
-  { value: 'implants', label: 'Implants' },
-  { value: 'veneers', label: 'Veneers' },
-  { value: 'whitening', label: 'Whitening' },
-  { value: 'braces', label: 'Braces' },
-]
+  { value: "all", label: "All Smiles" },
+  { value: "implants", label: "Implants" },
+  { value: "veneers", label: "Veneers" },
+  { value: "whitening", label: "Whitening" },
+  { value: "braces", label: "Braces" },
+];
 
 export const GalleryGrid = () => {
-  const [activeFilter, setActiveFilter] = useState<Category>('all')
-  const [lightboxOpen, setLightboxOpen] = useState(false)
-  const [currentImage, setCurrentImage] = useState(0)
-  const [sliderPosition, setSliderPosition] = useState(50)
-  const [isDragging, setIsDragging] = useState(false)
+  const [activeFilter, setActiveFilter] = useState<Category>("all");
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [currentImage, setCurrentImage] = useState(0);
+  const [sliderPosition, setSliderPosition] = useState(50);
+  const [isDragging, setIsDragging] = useState(false);
 
-  const filteredItems = activeFilter === 'all'
-    ? galleryItems
-    : galleryItems.filter(item => item.category === activeFilter)
+  const filteredItems =
+    activeFilter === "all"
+      ? galleryItems
+      : galleryItems.filter((item) => item.category === activeFilter);
 
   const openLightbox = (index: number) => {
-    const globalIndex = galleryItems.findIndex(item => item.id === filteredItems[index].id)
-    setCurrentImage(globalIndex)
-    setSliderPosition(50)
-    setLightboxOpen(true)
-  }
+    const globalIndex = galleryItems.findIndex(
+      (item) => item.id === filteredItems[index].id,
+    );
+    setCurrentImage(globalIndex);
+    setSliderPosition(50);
+    setLightboxOpen(true);
+  };
 
   const nextImage = () => {
-    setCurrentImage((prev) => (prev + 1) % galleryItems.length)
-    setSliderPosition(50)
-  }
+    setCurrentImage((prev) => (prev + 1) % galleryItems.length);
+    setSliderPosition(50);
+  };
 
   const prevImage = () => {
-    setCurrentImage((prev) => (prev - 1 + galleryItems.length) % galleryItems.length)
-    setSliderPosition(50)
-  }
+    setCurrentImage(
+      (prev) => (prev - 1 + galleryItems.length) % galleryItems.length,
+    );
+    setSliderPosition(50);
+  };
 
   const handleSliderMove = (clientX: number, containerRect: DOMRect) => {
-    const x = clientX - containerRect.left
-    setSliderPosition(Math.max(0, Math.min(100, (x / containerRect.width) * 100)))
-  }
+    const x = clientX - containerRect.left;
+    setSliderPosition(
+      Math.max(0, Math.min(100, (x / containerRect.width) * 100)),
+    );
+  };
 
-  const current = galleryItems[currentImage]
+  const current = galleryItems[currentImage];
 
   return (
     <>
@@ -137,8 +157,8 @@ export const GalleryGrid = () => {
                 onClick={() => setActiveFilter(cat.value)}
                 className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all ${
                   activeFilter === cat.value
-                    ? 'bg-teal text-white shadow-md'
-                    : 'bg-ivory text-warm-grey hover:bg-mint-fresh/50'
+                    ? "bg-teal text-white shadow-md"
+                    : "bg-ivory text-warm-grey hover:bg-mint-fresh/50"
                 }`}
               >
                 {cat.label}
@@ -150,10 +170,7 @@ export const GalleryGrid = () => {
 
       {/* Gallery Grid */}
       <section className="py-section max-w-7xl mx-auto px-6">
-        <motion.div
-          layout
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
+        <motion.div layout className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           <AnimatePresence mode="popLayout">
             {filteredItems.map((item, i) => (
               <motion.div
@@ -185,8 +202,12 @@ export const GalleryGrid = () => {
                   {/* Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                   <div className="absolute bottom-4 left-4 right-4">
-                    <h3 className="text-white font-medium text-sm">{item.title}</h3>
-                    <p className="text-white/70 text-xs mt-1">{item.description.substring(0, 60)}...</p>
+                    <h3 className="text-white font-medium text-sm">
+                      {item.title}
+                    </h3>
+                    <p className="text-white/70 text-xs mt-1">
+                      {item.description.substring(0, 60)}...
+                    </p>
                   </div>
                   {/* Compare icon */}
                   <div className="absolute top-4 right-4 bg-white/90 rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -209,8 +230,12 @@ export const GalleryGrid = () => {
 
         {filteredItems.length === 0 && (
           <div className="text-center py-20">
-            <p className="text-warm-grey text-lg">No results for this category yet.</p>
-            <p className="text-warm-grey text-sm mt-2">More transformations coming soon!</p>
+            <p className="text-warm-grey text-lg">
+              No results for this category yet.
+            </p>
+            <p className="text-warm-grey text-sm mt-2">
+              More transformations coming soon!
+            </p>
           </div>
         )}
       </section>
@@ -251,13 +276,13 @@ export const GalleryGrid = () => {
               onMouseLeave={() => setIsDragging(false)}
               onMouseMove={(e) => {
                 if (isDragging) {
-                  const rect = e.currentTarget.getBoundingClientRect()
-                  handleSliderMove(e.clientX, rect)
+                  const rect = e.currentTarget.getBoundingClientRect();
+                  handleSliderMove(e.clientX, rect);
                 }
               }}
               onTouchMove={(e) => {
-                const rect = e.currentTarget.getBoundingClientRect()
-                handleSliderMove(e.touches[0].clientX, rect)
+                const rect = e.currentTarget.getBoundingClientRect();
+                handleSliderMove(e.touches[0].clientX, rect);
               }}
             >
               <Image
@@ -267,7 +292,10 @@ export const GalleryGrid = () => {
                 className="object-contain"
                 sizes="90vw"
               />
-              <div className="absolute top-0 left-0 h-full overflow-hidden" style={{ width: `${sliderPosition}%` }}>
+              <div
+                className="absolute top-0 left-0 h-full overflow-hidden"
+                style={{ width: `${sliderPosition}%` }}
+              >
                 <Image
                   src={current.before}
                   alt="Before"
@@ -279,7 +307,10 @@ export const GalleryGrid = () => {
                   Before
                 </div>
               </div>
-              <div className="absolute top-0 bottom-0 w-0.5 bg-gold shadow-lg" style={{ left: `${sliderPosition}%` }}>
+              <div
+                className="absolute top-0 bottom-0 w-0.5 bg-gold shadow-lg"
+                style={{ left: `${sliderPosition}%` }}
+              >
                 <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center">
                   <ArrowsRightLeftIcon className="w-5 h-5 text-teal" />
                 </div>
@@ -300,12 +331,16 @@ export const GalleryGrid = () => {
             {/* Info bar */}
             <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-center">
               <p className="text-white font-medium">{current.title}</p>
-              <p className="text-white/50 text-sm mt-1 max-w-md">{current.description}</p>
-              <p className="text-white/30 text-xs mt-2">{currentImage + 1} / {galleryItems.length}</p>
+              <p className="text-white/50 text-sm mt-1 max-w-md">
+                {current.description}
+              </p>
+              <p className="text-white/30 text-xs mt-2">
+                {currentImage + 1} / {galleryItems.length}
+              </p>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
     </>
-  )
-}
+  );
+};

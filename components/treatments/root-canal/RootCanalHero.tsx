@@ -1,8 +1,8 @@
-'use client'
-import { motion } from 'framer-motion'
-import Image from 'next/image'
-import { Button } from '@/components/ui/Button'
-import { ShieldCheckIcon, ClockIcon } from '@heroicons/react/24/outline'
+"use client";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { Button } from "@/components/ui/Button";
+import { ShieldCheckIcon, ClockIcon } from "@heroicons/react/24/outline";
 
 export const RootCanalHero = () => {
   return (
@@ -26,9 +26,9 @@ export const RootCanalHero = () => {
               <span className="text-gold">Save Your Tooth in One Visit</span>
             </h1>
             <p className="text-warm-grey text-lg leading-relaxed mb-8">
-              Think root canals are painful? Think again. With modern microscope dentistry 
-              and advanced anesthesia, our patients feel nothing — and walk out with their 
-              natural tooth saved.
+              Think root canals are painful? Think again. With modern microscope
+              dentistry and advanced anesthesia, our patients feel nothing — and
+              walk out with their natural tooth saved.
             </p>
 
             <div className="flex flex-wrap gap-6 mb-8">
@@ -60,7 +60,7 @@ export const RootCanalHero = () => {
           >
             <div className="relative w-full aspect-square rounded-3xl overflow-hidden shadow-card-hover">
               <Image
-                src="/images/rct-hero.webp"
+                src="/images/painless-rct.png"
                 alt="Painless root canal treatment under dental microscope in Mumbai"
                 fill
                 className="object-cover"
@@ -72,5 +72,5 @@ export const RootCanalHero = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
